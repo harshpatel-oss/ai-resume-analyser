@@ -1,10 +1,21 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+import './app.css';
+import AppRouter from './routes.jsx';
+import { usePuterStore } from '../lib/puter.js';
+
+function RootApp() {
+  const { init } = usePuterStore();
+
+  useEffect(() => {
+    init();
+  }, [init]);
+
+  return <AppRouter />;
+}
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <RootApp />
+  </StrictMode>
+);
