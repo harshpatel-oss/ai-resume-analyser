@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import { resumes, AIResponseFormat, prepareInstructions } from '../constants/index.js'
 import './App.css'
 import { usePuterStore } from '../lib/puter.js'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import ResumeCard from '../components/ResumeCard.jsx'
-import { useEffect } from 'react'
+
 export function meta(){
 return[
    {title: "Resumind"},
@@ -16,14 +16,20 @@ return[
 
 function App() {
   const { isLoading, auth } = usePuterStore();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    useEffect(() => {
-        if(auth.isAuthenticated) navigate('/auth?next=/');
-    }, [auth.isAuthenticated ])
+  useEffect(() => {
+    if (
+      !auth.isAuthenticated &&
+      location.pathname !== '/auth'
+    ) {
+      navigate('/auth?next=/');
+    }
+  }, [auth.isAuthenticated, location.pathname, navigate]);
 
   return (
-     <div className ="bg-[url('/images/bg-main.svg')] bg-cover" >
+     <main className ="bg-[url('/images/bg-main.svg')] bg-cover" >
 
      <Navbar/>
 
@@ -51,7 +57,7 @@ function App() {
 
 
      
-     </div>
+     </main>
   
   )
 }

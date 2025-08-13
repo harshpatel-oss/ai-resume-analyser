@@ -8,8 +8,10 @@ const Auth = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(auth.isAuthenticated) navigate(next);
-    }, [auth.isAuthenticated, next])
+        if (auth.isAuthenticated && next && location.pathname !== next) {
+            navigate(next);
+        }
+    }, [auth.isAuthenticated, next, navigate, location.pathname])
 
   
   return (

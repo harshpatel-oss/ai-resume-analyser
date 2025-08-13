@@ -9,7 +9,7 @@ function RootApp() {
 
   useEffect(() => {
     init();
-  }, [init]);
+  }, []);
 
   return <AppRouter />;
 }
