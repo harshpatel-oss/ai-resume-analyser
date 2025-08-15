@@ -21,12 +21,10 @@ const Upload = () => {
     const handleAnalyze = async ({ companyName, jobTitle, jobDescription, file }) => {
         setIsProcessing(true);
         
-        // ...existing code...
-    setStatusText('Uploading the file...');
-    const uploadedFile = await fs.upload([file]);
-    console.log('uploadedFile:', uploadedFile, 'file:', file);
-     if (!uploadedFile) return setStatusText('Error: Failed to upload file');
-    // ...existing code...
+        setStatusText('Uploading the file...');
+        const uploadedFile = await fs.upload([file]);
+        console.log('uploadedFile:', uploadedFile, 'file:', file);
+         if (!uploadedFile) return setStatusText('Error: Failed to upload file');
         
         setStatusText('Converting to image...');
         const imageFile = await convertPdfToImage(file);
@@ -63,10 +61,13 @@ const Upload = () => {
             : feedback.message.content[0].text;
 
         data.feedback = JSON.parse(feedbackText);
+
+       
+
         await kv.set(`resume:${uuid}`, JSON.stringify(data));
         setStatusText('Analysis complete, redirecting...');
         console.log(data);
-        // navigate(`/resume/${uuid}`);
+        navigate(`/resume/${uuid}`);
     };
 
     const handleSubmit = (e) => {
