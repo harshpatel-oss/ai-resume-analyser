@@ -58,7 +58,7 @@ const resume = () => {
             <span  className='text-gray-800 text-sm font-semibold'> Back to HomePage</span>
             </Link>
         </nav>
-        <div className="feedback -section bg-[url('/images/bg-small.svg')] bg-cover flex flex-row w-full max-lg:flex-col-reverse">
+        <div className="feedback -section bg-[url('/images/bg-small.svg')] bg-cover flex flex-row w-full max-lg:flex-col-reverse justify-center">
             <section className=" h-[100vh] sticky top-0 items-center justify-center">
                 {imageUrl && resumeUrl && (
                     <div className='animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit'>
@@ -72,8 +72,10 @@ const resume = () => {
                     </div> 
                 )}
             </section>
-            <section className="feedback-section">
-                    <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
+            <section className="feedback-section flex-col justify-center">
+                <div className='flex flex-row items-center justify-center'>
+                     <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
+                </div>                 
                     {feedback ? (
                        <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
                             <Summary feedback={feedback} />
