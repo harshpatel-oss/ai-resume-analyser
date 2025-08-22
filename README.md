@@ -30,6 +30,3 @@ Backend & database run on **Puter.com** via **puter.js**, and analysis is powere
 **AI Engine:** Puter.ai
 
 ---
-
-## 📸 Screenshots
-_Add your screenshots here_
