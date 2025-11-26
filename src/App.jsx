@@ -48,7 +48,7 @@ function App() {
   }, []);
 
   return (
-     <main className ="bg-[url('/images/bg-main.svg')] bg-cover" >
+     <main className ="bg-[url('/images/bg-main.svg')] bg-cover rounded-b-full" >
 
      <Navbar/>
 
