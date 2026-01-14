@@ -60,7 +60,23 @@ const Upload = () => {
             ? feedback.message.content
             : feedback.message.content[0].text;
 
-        data.feedback = JSON.parse(feedbackText);
+        const safeParseJSONFromString = (str) => {
+            try {
+                return JSON.parse(str);
+            } catch (e) {
+                const codeBlockMatch = str.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
+                if (codeBlockMatch && codeBlockMatch[1]) {
+                    try { return JSON.parse(codeBlockMatch[1]); } catch (e2) {}
+                }
+                const objMatch = str.match(/(\{[\s\S]*\})/m);
+                if (objMatch && objMatch[1]) {
+                    try { return JSON.parse(objMatch[1]); } catch (e3) {}
+                }
+                return { raw: str };
+            }
+        };
+
+        data.feedback = safeParseJSONFromString(feedbackText);
 
        
 

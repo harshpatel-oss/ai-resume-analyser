@@ -1,7 +1,7 @@
 import {React , useRef , useState , useEffect} from 'react'
 
 const ScoreGauge = ({score = 75}) => {
-    score*=10;
+
      const [pathLength, setPathLength] = useState(0);
     const pathRef = useRef(null);
 

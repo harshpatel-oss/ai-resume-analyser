@@ -7,7 +7,7 @@ import {
 } from "./Accordion";
 
 const ScoreBadge = ({ score }) => {
-  score*=10;
+  
   return (
     <div
       className={cn(

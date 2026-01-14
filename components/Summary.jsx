@@ -2,7 +2,7 @@ import React from 'react'
 import ScoreGauge from './ScoreGauge'
 import ScoreBadge from './ScoreBadge';
 const Category = ({title , score})=>{
-    score*=10;
+    
    const textColor = score > 70 ? 'text-green-600'
             : score > 49
         ? 'text-yellow-600' : 'text-red-600';

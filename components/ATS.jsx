@@ -2,7 +2,7 @@ import React from 'react';
 
 const ATS = ({score, suggestions }) => {
   // Determine background gradient based on score
-  score*=10;
+
   const gradientClass = score > 69
     ? 'from-green-100'
     : score > 49
